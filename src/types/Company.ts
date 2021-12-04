@@ -1,12 +1,12 @@
 export default interface Company {
-  id: number;
+  id?: number;
   companyName: string;
-  companyNr: string;
-  deleted: boolean;
+  companyNr?: string;
+  deleted?: boolean;
   emailAddress: string;
   fax: string;
   firstName: string;
   lastName: string;
   phone: string;
-  address: string[];
+  addressList: string[];
 }

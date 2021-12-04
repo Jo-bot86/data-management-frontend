@@ -9,8 +9,9 @@ export default function CompanyCreate() {
       lastName=''
       emailAddress=''
       fax=''
-      phone='' 
-      address={[]}      
+      phone=''
+      addressList={['']}
+      isEdit={false}
     />
   );
 }

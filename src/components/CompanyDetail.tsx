@@ -1,23 +1,27 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDataApi } from '../hooks/UseDataApi';
 import { companyApi } from '../shared/CompanyApi';
 import Company from '../types/Company';
 
 export default function CompanyDetail() {
-  console.log(useParams());
   const { id } = useParams<{ id: string }>();
   const [company] = useDataApi<Company>(id);
   const history = useHistory();
 
   const deleteCompany = (id: string): void => {
-    companyApi<Company>('DELETE', `companies/${id}`, onShowList);
+    console.log(id)
+    companyApi<Company>('DELETE', `/companies/${id}`, onShowList);
   };
 
-  if (!company) {
+  const editCompany = (id: string) => {
+    history.push(`/companies/${id}/edit`)
+  }
+
+  if (!company || company.deleted) {
     return <div>loading</div>;
   }
+
 
   const onShowList = () => {
     history.push('/companies');
@@ -55,7 +59,7 @@ export default function CompanyDetail() {
       <div className='row'>
         <div className='col-4'></div>
         <div className='col text-center'>
-          <button className='btn btn-primary' type='submit'>
+          <button className='btn btn-primary' type='submit' onClick={() => editCompany(id)}>
             Edit
           </button>
           <button className='btn btn-warning ms-3' onClick={onShowList}>

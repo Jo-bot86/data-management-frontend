@@ -29,7 +29,6 @@ export default function CompanyList() {
             )
         )}
       </div>
-      <button className='btn btn-success'>Add new Company</button>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export const companies: Company[] = [
     firstName: 'Max',
     lastName: 'Mustermann',
     phone: '0123-456780',
-    address: [
+    addressList: [
       'Baumstraße 23, 73485 Musterhausen',
       'Blattweg 48, 39483 Stammingen',
     ],
@@ -25,7 +25,7 @@ export const companies: Company[] = [
     firstName: 'John',
     lastName: 'Doe',
     phone: '0223-888999',
-    address: [
+    addressList: [
       'Waldstraße 2, 34336 München',
       'Steingasse 88, 55748 Eppingen',
     ],
@@ -40,7 +40,7 @@ export const companies: Company[] = [
     firstName: 'John',
     lastName: 'Doe',
     phone: '0223-888999',
-    address: [
+    addressList: [
       'Waldstraße 2, 34336 München',
       'Steingasse 88, 55748 Eppingen',
     ],
@@ -55,7 +55,7 @@ export const companies: Company[] = [
     firstName: 'John',
     lastName: 'Doe',
     phone: '0223-888999',
-    address: [
+    addressList: [
       'Waldstraße 2, 34336 München',
       'Steingasse 88, 55748 Eppingen',
     ],
