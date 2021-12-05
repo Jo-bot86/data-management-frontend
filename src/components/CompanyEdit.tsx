@@ -19,7 +19,7 @@ export default function CompanyEdit() {
       emailAddress={company.emailAddress}
       fax={company.fax}
       phone={company.phone}
-      addressList={company.addressList ? company.addressList : [""]}
+      addressList={company.addressList ? company.addressList : [{street: "", country: "", city: "", postCode: "", addressType: ""}]}
       isEdit={true}
     />
   );

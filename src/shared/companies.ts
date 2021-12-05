@@ -1,4 +1,4 @@
-import Company from "../types/Company";
+import Company from '../types/Company';
 export const companies: Company[] = [
   {
     id: 1,
@@ -11,8 +11,20 @@ export const companies: Company[] = [
     lastName: 'Mustermann',
     phone: '0123-456780',
     addressList: [
-      'Baumstraße 23, 73485 Musterhausen',
-      'Blattweg 48, 39483 Stammingen',
+      {
+        city: 'Musterhausen',
+        country: 'Germany',
+        postCode: '34336',
+        street: 'Waldstraße 2',
+        addressType: 'main',
+      },
+      {
+        city: 'Eppingen',
+        country: 'Germany',
+        postCode: '55748',
+        street: 'Steingasse 88',
+        addressType: 'post',
+      },
     ],
   },
   {
@@ -26,8 +38,20 @@ export const companies: Company[] = [
     lastName: 'Doe',
     phone: '0223-888999',
     addressList: [
-      'Waldstraße 2, 34336 München',
-      'Steingasse 88, 55748 Eppingen',
+      {
+        city: 'München',
+        country: 'Germany',
+        postCode: '34336',
+        street: 'Waldstraße 2',
+        addressType: 'main',
+      },
+      {
+        city: 'Eppingen',
+        country: 'Germany',
+        postCode: '55748',
+        street: 'Steingasse 88',
+        addressType: 'post',
+      },
     ],
   },
   {
@@ -41,8 +65,20 @@ export const companies: Company[] = [
     lastName: 'Doe',
     phone: '0223-888999',
     addressList: [
-      'Waldstraße 2, 34336 München',
-      'Steingasse 88, 55748 Eppingen',
+      {
+        city: 'München',
+        country: 'Germany',
+        postCode: '34336',
+        street: 'Waldstraße 2',
+        addressType: 'main',
+      },
+      {
+        city: 'Eppingen',
+        country: 'Germany',
+        postCode: '55748',
+        street: 'Steingasse 88',
+        addressType: 'post',
+      },
     ],
   },
   {
@@ -56,8 +92,20 @@ export const companies: Company[] = [
     lastName: 'Doe',
     phone: '0223-888999',
     addressList: [
-      'Waldstraße 2, 34336 München',
-      'Steingasse 88, 55748 Eppingen',
+      {
+        city: 'München',
+        country: 'Germany',
+        postCode: '34336',
+        street: 'Waldstraße 2',
+        addressType: 'main',
+      },
+      {
+        city: 'Eppingen',
+        country: 'Germany',
+        postCode: '55748',
+        street: 'Steingasse 88',
+        addressType: 'post',
+      },
     ],
-  }
+  },
 ];

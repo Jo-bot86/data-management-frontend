@@ -10,7 +10,7 @@ export default function CompanyCreate() {
       emailAddress=''
       fax=''
       phone=''
-      addressList={['']}
+      addressList={[{street: "", country: "", city: "", postCode: "", addressType: ""}]}
       isEdit={false}
     />
   );

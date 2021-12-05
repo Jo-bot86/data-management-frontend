@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { companyApi } from '../shared/CompanyApi';
+import { Address } from '../types/Address';
 import Company from '../types/Company';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
   emailAddress: string;
   fax: string;
   phone: string;
-  addressList: string[];
+  addressList: Address[];
   isEdit: boolean;
 }
 
@@ -50,15 +51,20 @@ export default function CompanyForm(props: Props) {
 
   const handleAddressChange = (
     e: ChangeEvent<HTMLInputElement>,
-    index: number
+    index: number,
+    key: string
   ) => {
-    const newAddressList = [...addressList];
-    newAddressList[index] = e.target.value;
-    setAddressList(newAddressList);
+    const newAddress = { ...addressList[index], [key]: e.target.value };
+    setAddressList((currAddressList) => [
+      ...currAddressList.splice(index, 1, newAddress),
+    ]);
   };
 
   const addAddress = () => {
-    setAddressList((currAddressList) => [...currAddressList, '']);
+    setAddressList((currAddressList) => [
+      ...currAddressList,
+      { street: '', country: '', city: '', postCode: '', addressType: '' },
+    ]);
   };
 
   const removeAddress = (index: number) => {
@@ -131,27 +137,79 @@ export default function CompanyForm(props: Props) {
             +
           </button>
           {addressList.map((address, index) => (
-            <div className='input-group' key={index}>
-              <input
-                type='text'
-                className='form-control'
-                value={address}
-                onChange={(e) => handleAddressChange(e, index)}
-                required
-              />
-              <button
-                className='input-group-append btn btn-outline-danger'
-                onClick={() => removeAddress(index)}
-                type='button'
-              >
-                <i className='bi bi-trash'></i>
-              </button>
-            </div>
+            <>
+              <div className='input-group' key={index}>
+                <input
+                  type='text'
+                  placeholder='Street'
+                  className='form-control'
+                  value={address.street}
+                  onChange={(e) => handleAddressChange(e, index, 'street')}
+                  required
+                />
+                <input
+                  type='text'
+                  placeholder='City'
+                  className='form-control'
+                  value={address.city}
+                  onChange={(e) => handleAddressChange(e, index, 'city')}
+                  required
+                />
+                <input
+                  type='text'
+                  placeholder='Post Code'
+                  className='form-control'
+                  value={address.postCode}
+                  onChange={(e) => handleAddressChange(e, index, 'postCode')}
+                  required
+                />
+                <input
+                  type='text'
+                  placeholder='Country'
+                  className='form-control'
+                  value={address.country}
+                  onChange={(e) => handleAddressChange(e, index, 'country')}
+                  required
+                />
+
+                <button
+                  className='input-group-append btn btn-outline-danger'
+                  onClick={() => removeAddress(index)}
+                  type='button'
+                >
+                  <i className='bi bi-trash'></i>
+                </button>
+              </div>
+              <div className='row'>
+                <div className='col col-1'>
+                  <div className='form-check'>
+                    <input
+                      className='form-check-input'
+                      type='radio'
+                      name='addressType'
+                      id='main'
+                    />
+                    <label htmlFor='main'>main</label>
+                  </div>
+                </div>
+                <div className='col col-2'>
+                  <input
+                    className='form-check-input'
+                    type='radio'
+                    name='addressType'
+                    id='post'
+                  />
+                  <label className='mx-2' htmlFor='post'>
+                    post
+                  </label>
+                </div>
+              </div>
+            </>
           ))}
-          <div className='valid-feedback'>Looks good!</div>
         </div>
       </div>
-      <div className='row'>
+
+      <div className='row mt-3'>
         <div className='col'>
           <label className='form-label' htmlFor='email'>
             Email

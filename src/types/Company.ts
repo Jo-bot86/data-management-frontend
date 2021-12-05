@@ -1,3 +1,5 @@
+import { Address } from "./Address";
+
 export default interface Company {
   id?: number;
   companyName: string;
@@ -8,5 +10,7 @@ export default interface Company {
   firstName: string;
   lastName: string;
   phone: string;
-  addressList: string[];
+  addressList: Address[];
 }
+
+

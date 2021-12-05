@@ -10,18 +10,18 @@ export default function CompanyDetail() {
   const history = useHistory();
 
   const deleteCompany = (id: string): void => {
-    console.log(id)
+    console.log(id);
     companyApi<Company>('DELETE', `/companies/${id}`, onShowList);
   };
 
   const editCompany = (id: string) => {
-    history.push(`/companies/${id}/edit`)
-  }
+    history.push(`/companies/${id}/edit`);
+  };
 
   if (!company || company.deleted) {
     return <div>loading</div>;
   }
-
+  console.log(company)
 
   const onShowList = () => {
     history.push('/companies');
@@ -52,6 +52,18 @@ export default function CompanyDetail() {
               <li className='list-group-item'>
                 <b>Fax:</b> {company.fax}
               </li>
+              <li className='list-group-item'>
+                <b>Address:</b>
+                { company.addressList &&company.addressList.map((address, index) => (
+                  <div key={index}>
+                    <span>AddressTyp: {address.addressType}</span>
+                    <span>Street: {address.street}</span>
+                    <span>City: {address.city}</span>
+                    <span>Post Code: {address.postCode}</span>
+                    <span>Country: {address.country}</span>
+                  </div>
+                ))}
+              </li>
             </ul>
           </div>
         </div>
@@ -59,7 +71,11 @@ export default function CompanyDetail() {
       <div className='row'>
         <div className='col-4'></div>
         <div className='col text-center'>
-          <button className='btn btn-primary' type='submit' onClick={() => editCompany(id)}>
+          <button
+            className='btn btn-primary'
+            type='submit'
+            onClick={() => editCompany(id)}
+          >
             Edit
           </button>
           <button className='btn btn-warning ms-3' onClick={onShowList}>
